@@ -1,0 +1,55 @@
+The Binary Search 
+
+Class Phonebook:
+    Methods:
+        - binarySearch(sortedContacts, name):
+            left = 0  // Initialize left pointer
+            right = sortedContacts.size - 1  // Initialize right pointer
+            WHILE (left <= right) DO
+                mid = left + (right - left) / 2  // Calculate mid index
+                IF (sortedContacts.get(mid).getName() == name) THEN
+                    RETURN mid  // Contact found
+                ELSE IF (sortedContacts.get(mid).getName() < name) THEN
+                    left = mid + 1  // Move left pointer to the right
+                ELSE
+                    right = mid - 1  // Move right pointer to the left
+                ENDIF
+            ENDWHILE
+            RETURN -1  // Contact not found
+
+          The Merge Sort 
+
+Class Phonebook:
+    Methods:
+        - mergeSort(list):
+
+          IF (list.size <= 1) THEN  // If list size is 1 or less, it is already sorted
+                RETURN list
+            ENDIF
+            mid = list.size / 2  // Find the middle index
+            left = list.subList(0, mid)  // Split list into left half
+            right = list.subList(mid, list.size)  // Split list into right half
+            RETURN merge(mergeSort(left), mergeSort(right))  // Recursively sort each half and merge them
+        
+        - merge(left, right):
+            merged = new List<Contact>()  // Initialize merged as an empty list
+            leftIndex = 0
+            rightIndex = 0
+            WHILE (leftIndex < left.size AND rightIndex < right.size) DO
+                IF (left.get(leftIndex).getName() <= right.get(rightIndex).getName()) THEN
+                    merged.add(left.get(leftIndex))  // Add left element to merged
+                    leftIndex = leftIndex + 1
+                ELSE
+                    merged.add(right.get(rightIndex))  // Add right element to merged
+                    rightIndex = rightIndex + 1
+                ENDIF
+            ENDWHILE
+            WHILE (leftIndex < left.size) DO
+                merged.add(left.get(leftIndex))  // Add remaining elements of left to merged
+                leftIndex = leftIndex + 1
+            ENDWHILE
+            WHILE (rightIndex < right.size) DO
+                merged.add(right.get(rightIndex))  // Add remaining elements of right to merged
+                rightIndex = rightIndex + 1
+            ENDWHILE
+            RETURN merged
