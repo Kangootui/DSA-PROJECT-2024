@@ -1,5 +1,4 @@
 The Binary Search 
-
 Class Phonebook:
     Methods:
         - binarySearch(sortedContacts, name):
@@ -16,14 +15,9 @@ Class Phonebook:
                 ENDIF
             ENDWHILE
             RETURN -1  // Contact not found
-
-          The Merge Sort 
-
-Class Phonebook:
-    Methods:
+        
         - mergeSort(list):
-
-          IF (list.size <= 1) THEN  // If list size is 1 or less, it is already sorted
+            IF (list.size <= 1) THEN  // If list size is 1 or less, it is already sorted
                 RETURN list
             ENDIF
             mid = list.size / 2  // Find the middle index
@@ -52,6 +46,7 @@ Class Phonebook:
                 merged.add(right.get(rightIndex))  // Add remaining elements of right to merged
                 rightIndex = rightIndex + 1
             ENDWHILE
+
             RETURN merged
 
 // Adding contact
@@ -72,6 +67,8 @@ Attributes:
                 rear = rear + 1  // Move rear to next index position
                 queue[rear] = contact  // Insert element in queue
             ENDIF
+           
+           // Deleting Contact
         - dequeue():
             IF (front == -1) THEN  // Check if the queue is empty
                 DISPLAY "Queue is empty"
@@ -86,4 +83,13 @@ Attributes:
                 ENDIF
                 RETURN contact
             ENDIF
+                
+                //Displaying Contact
+             - displayContacts():
+            IF (front == -1) THEN  // Check if the queue is empty
+                DISPLAY "Queue is empty"
+            ELSE
+                FOR i = front TO rear DO
+                    DISPLAY queue[i]
+           
 
