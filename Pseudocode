@@ -53,3 +53,37 @@ Class Phonebook:
                 rightIndex = rightIndex + 1
             ENDWHILE
             RETURN merged
+
+// Adding contact
+Attributes:
+        - int size = 100  // Maximum size of the queue
+        - Contact queue[] = new Contact[size]  // Declaring array called queue
+        - int front = -1  // Setting empty queue
+        - int rear = -1  // Setting empty queue
+    Methods:
+        - enqueue(contact):
+            IF (rear == size - 1) THEN  // Check if the queue is full
+                DISPLAY "Queue is full"
+            ELSE IF (front == -1 AND rear == -1) THEN  // Check if the queue is empty
+                front = 0  // Move front to index 0
+                rear = 0  // Move rear to index 0
+                queue[rear] = contact  // Insert element in queue
+            ELSE
+                rear = rear + 1  // Move rear to next index position
+                queue[rear] = contact  // Insert element in queue
+            ENDIF
+        - dequeue():
+            IF (front == -1) THEN  // Check if the queue is empty
+                DISPLAY "Queue is empty"
+                RETURN NULL
+            ELSE
+                contact = queue[front]  // Get the front element
+                IF (front == rear) THEN  // Check if the queue has only one element
+                    front = -1  // Reset front
+                    rear = -1  // Reset rear
+                ELSE
+                    front = front + 1  // Move front to next index position
+                ENDIF
+                RETURN contact
+            ENDIF
+
